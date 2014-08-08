@@ -7,7 +7,7 @@
 # It also perfoms a ping test (currently 100 poings to www.comcast.net) to determine average and max ping time as well as packet loss
 # all of the data is printed in a comma-seperated format for use in a spreadsheet to analyze patterns
 # the output is in the following format:
-#timestamp,% packet loss,avg ping time(ms),max ping time(ms),down channel 1,snr,power,down channel 2,snr,power,down channel 3,snr,power,down channel 4,snr,power,up channel 1,power,up channel 2,power,up channel 3,power,log timestamp,log message
+#timestamp,% packet loss,avg ping time(ms),max ping time(ms),down channel 1 snr,down channel 1 power,down channel 2 snr,down channel 2 power,down channel 3 snr,down channel 3 power,down channel 4 snr,down channel 4 power,up channel 1 power,up channel 2 power,up channel 3 power,log timestamp,log message
 
 # The script is intended to be run on cron (I run it every 5 minutes)
 # here is an example crontab entry:
@@ -42,37 +42,21 @@ ping_server = "www.comcast.net"
 logs_data = Nokogiri::HTML(open(logs_url))
 signal_data = Nokogiri::HTML(open(signal_url))
 
-# routine to strip-out nbsp characters from the string
-def strip_html(str)
-   nbsp = Nokogiri::HTML("&nbsp;").text
-   str.gsub(nbsp,'')
-   #str.gsub("\n",'')
-end
-
 # Here we create indexes of the <TD> elements we need to access for the various pieces of information
 # down channel: 1-4
 # down snr: 11-14
 # down power level: 22-25
 # up channel: 27-29
 # up power level: 43-45
-downstream_index = [1, 11, 22, 2, 12, 23, 3, 13, 24, 4, 14, 25]
-upstream_index = [27, 43, 28, 44, 29, 45]
+downstream_index = [11, 12, 13, 14, 22, 23, 24, 25]
+upstream_index = [43, 44, 45]
 
-# iterate through each of the indexes to retreive the appropriate information
+# iterate through each of the indexes to retreive the appropriate information, only prsing out numbers
 downstream_index.each { |index|
-   #puts "index: #{index} '" + strip_html(signal_data.css("td")[index].text).strip + "'"
-   if index.between?(1,4)
-      downstream.push(strip_html(signal_data.css("td")[index].text).strip + " (down)")
-   else
-      downstream.push(strip_html(signal_data.css("td")[index].text).strip)
-   end
+   downstream.push(signal_data.css("td")[index].text.gsub(/[^\d]/,''))
 }
 upstream_index.each { |index|
-   if index.between?(27,29)
-      upstream.push(strip_html(signal_data.css("td")[index].text).strip + " (up)")
-   else
-      upstream.push(strip_html(signal_data.css("td")[index].text).strip)
-   end
+   upstream.push(signal_data.css("td")[index].text.gsub(/[^\d]/,''))
 }
 
 # Fetch the most recent modem logs timestamp and log message
@@ -92,5 +76,5 @@ if ($?.exitstatus == 0)
 end
 
 # output eveything as a comma-delimited line for future analysis
-puts time.strftime("%Y-%m-%d %H:%M:%S") + "," + packet_loss + "," + avgms + "," + maxms + "," + downstream.join(",") + upstream.join(",") + timestamp + "," + message.split(";")[0]
+puts time.strftime("%Y-%m-%d %H:%M:%S") + "," + packet_loss + "," + avgms + "," + maxms + "," + downstream.join(",") + "," + upstream.join(",") + "," + timestamp + "," + message.split(";")[0]
 
