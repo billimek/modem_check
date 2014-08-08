@@ -7,7 +7,7 @@ It also perfoms a ping test (currently 100 pings to www.comcast.net) to determin
 
 All of the data is printed in a comma-seperated format for use in a spreadsheet to analyze pattern
 the output is in the following format:
-`timestamp,% packet loss,avg ping time(ms),max ping time(ms),down channel 1 snr,down channel 1 power,down channel 2 snr,down channel 2 power,down channel 3 snr,down channel 3 power,down channel 4 snr,down channel 4 power,up channel 1 power,up channel 2 power,up channel 3 power,log timestamp,log message`
+`timestamp,% packet loss,avg ping time(ms),max ping time(ms),down channel 1 snr,down channel 2 snr,down channel 3 snr,   down channel 4 snr,down channel 1 power,down channel 2 power,down channel 3 power,down channel 4 power,up channel 1     power,up channel 2 power,up channel 3 power,log timestamp,log message`
 
 # Examples
 ## Crontab entry
