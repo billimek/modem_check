@@ -21,7 +21,7 @@ avgms = ""
 maxms = ""
 downstream = Array.new
 upstream = Array.new
-ping_count = 2 
+ping_count = 100
 ping_server = "www.comcast.net"
 
 # Here we load the URLs into Nokogiri for parsing downloading the page in
