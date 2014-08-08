@@ -16,8 +16,10 @@ The script is intended to be run on cron (I run it every 5 minutes)
 
 ## Example output
 ```
-2014-08-08 10:35:00,0.0%,28.894,28.899,7 (down),37 dB,0 dBmV,10 (down),37 dB,-3 dBmV,12 (down),37 dB,-4 dBmV,15 (down),37 dB,-4 dBmV6 (up),39 dBmV,5 (up),39 dBmV,7 (up),39 dBmVAug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
-2014-08-08 10:40:01,0.0%,29.190,43.422,7 (down),37 dB,0 dBmV,10 (down),36 dB,-3 dBmV,12 (down),37 dB,-4 dBmV,15 (down),36 dB,-4 dBmV6 (up),39 dBmV,5 (up),39 dBmV,7 (up),39 dBmVAug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
-2014-08-08 10:45:00,0.0%,28.859,35.932,7 (down),37 dB,0 dBmV,10 (down),37 dB,-3 dBmV,12 (down),37 dB,-3 dBmV,15 (down),37 dB,-3 dBmV6 (up),39 dBmV,5 (up),39 dBmV,7 (up),39 dBmVAug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
-2014-08-08 10:50:01,0.0%,29.401,41.258,7 (down),37 dB,0 dBmV,10 (down),37 dB,-2 dBmV,12 (down),37 dB,-2 dBmV,15 (down),37 dB,-3 dBmV6 (up),39 dBmV,5 (up),39 dBmV,7 (up),39 dBmVAug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
+2014-08-08 12:30:01,0.0%,28.972,39.697,37,37,37,37,0,-2,-3,-4,40,39,39,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
+2014-08-08 12:35:00,0.0%,28.754,36.918,37,37,37,37,0,-2,-3,-4,40,39,39,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
+2014-08-08 12:40:00,0.0%,29.387,37.260,36,36,37,37,-5,-5,-5,-5,39,39,39,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
+2014-08-08 12:45:00,0.0%,28.989,37.495,36,37,37,37,-4,-4,-4,-5,39,39,39,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
+2014-08-08 12:50:00,0.0%,29.003,36.379,37,37,37,36,-0,-2,-4,-5,39,39,39,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
+2014-08-08 12:55:01,0.0%,28.925,36.435,37,37,37,36,-0,-2,-3,-5,39,39,39,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
 ```

@@ -53,10 +53,10 @@ upstream_index = [43, 44, 45]
 
 # iterate through each of the indexes to retreive the appropriate information, only prsing out numbers
 downstream_index.each { |index|
-   downstream.push(signal_data.css("td")[index].text.gsub(/[^\d]/,''))
+   downstream.push(signal_data.css("td")[index].text.gsub(/[^\d-]/,''))
 }
 upstream_index.each { |index|
-   upstream.push(signal_data.css("td")[index].text.gsub(/[^\d]/,''))
+   upstream.push(signal_data.css("td")[index].text.gsub(/[^\d-]/,''))
 }
 
 # Fetch the most recent modem logs timestamp and log message
