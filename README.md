@@ -47,3 +47,7 @@ The script is intended to be run on cron (I run it every 5 minutes)
 2014-08-08 14:50:00,0.0%,43.123,53.103,38,37,37,37,1,-1,-2,-2,38,37,37,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
 2014-08-08 14:55:01,0.0%,41.673,48.663,37,37,37,37,1,-1,-2,-2,38,37,37,Aug 07 2014 12:44:11,SYNC Timing Synchronization failure - Loss of Sync
 ```
+
+## Sample graphs created from data:
+![]https://raw.githubusercontent.com/billimek/modem_check/master/images/ping%20graph.png
+![]https://raw.githubusercontent.com/billimek/modem_check/master/images/snr%20power%20graph.png
