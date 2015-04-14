@@ -21,6 +21,27 @@ require 'nokogiri'
 # download a webpage
 require 'open-uri'
 
+require "rubygems"
+require "google_drive"
+
+def update_google (data)
+   # Logs in.
+   # You can also use OAuth. See document of
+   # GoogleDrive.login_with_oauth for details.
+   session = GoogleDrive.login("email", "password")
+
+   ws = session.spreadsheet_by_key("key").worksheets[0]
+
+   new_row = ws.num_rows + 1
+   data.each_with_index do |val, index|
+      #puts "========= 'inserting #{val} to index #{index+1}"
+      ws[new_row, index + 1] = val
+   end
+
+   ws.save()
+   ws.reload()
+end
+
 # get the current timestamp
 time = Time.new
 
@@ -35,7 +56,7 @@ maxms = ""
 downstream = Array.new
 upstream = Array.new
 ping_count = 100
-ping_server = "www.comcast.net"
+ping_server = "google.com"
 
 # Here we load the URLs into Nokogiri for parsing downloading the page in
 # the process
@@ -75,6 +96,21 @@ if ($?.exitstatus == 0)
    end
 end
 
+output = [
+   time.strftime("%Y-%m-%d %H:%M:%S"),
+   packet_loss,
+   avgms,
+   maxms,
+]
+output.concat(downstream)
+output.concat(upstream)
+output.push(timestamp).push(message.split(";")[0])
+
+
 # output eveything as a comma-delimited line for future analysis
-puts time.strftime("%Y-%m-%d %H:%M:%S") + "," + packet_loss + "," + avgms + "," + maxms + "," + downstream.join(",") + "," + upstream.join(",") + "," + timestamp + "," + message.split(";")[0]
+#puts time.strftime("%Y-%m-%d %H:%M:%S") + "," + packet_loss + "," + avgms + "," + maxms + "," + downstream.join(",") + "," + upstream.join(",") + "," + timestamp + "," + message.split(";")[0]
+puts output.join(",")
+
+# push the new row to the google spreadsheet
+update_google output
 

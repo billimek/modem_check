@@ -1,0 +1,5 @@
+# run the modem_check.rb script every 15 minutes
+*/15 * * * *       $HOME/Documents/git/modem_check/modem_check.rb >> $HOME/tmp/modem_log.txt 2>/dev/null
+
+# run the speedtest check every hour at 12-minutes past the hour, every other hour
+12 */2 * * *       $HOME/Documents/git/modem_check/speedtest.rb >> $HOME/tmp/speedtest_log.txt 2>/dev/null

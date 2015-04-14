@@ -49,5 +49,5 @@ The script is intended to be run on cron (I run it every 5 minutes)
 ```
 
 ## Sample graphs created from data:
-![]https://raw.githubusercontent.com/billimek/modem_check/master/images/ping%20graph.png
-![]https://raw.githubusercontent.com/billimek/modem_check/master/images/snr%20power%20graph.png
+![](https://raw.githubusercontent.com/billimek/modem_check/master/images/ping%20graph.png)
+![](https://raw.githubusercontent.com/billimek/modem_check/master/images/snr%20power%20graph.png)
